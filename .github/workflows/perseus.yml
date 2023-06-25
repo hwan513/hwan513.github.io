@@ -33,8 +33,19 @@ jobs:
         with:
           crate: perseus-cli
           
-      - name: Setup Pages
+      - name: Setup pages
         uses: actions/configure-pages@v3
+      
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
         
       - name: Build with Perseus
         run: perseus deploy -e
