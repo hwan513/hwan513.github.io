@@ -4,7 +4,8 @@ use sycamore::prelude::*;
 fn index_page<G: Html>(cx: Scope) -> View<G> {
     view! { cx,
         // Better styling will be in the works
-        div(style = r#"padding: 2em; font-size: 4vh; max-width: 45ch; font-family: "Inter", "Verdana", "RobotoDraft", "Roboto", sans-serif; line-height: 1.5em"#) {
+
+        main {
             p {
                 "Hi Hello! I'm Henry Wang, a penultimate year software engineering student at the University of Auckland."
                 br {}
@@ -25,10 +26,12 @@ fn index_page<G: Html>(cx: Scope) -> View<G> {
 fn head(cx: Scope) -> View<SsrNode> {
     view! { cx,
         title { "Henry Wang" }
-        link (
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
-          rel="stylesheet"
-        ) {}
+
+        // general stylesheets
+        link (href="https://fonts.googleapis.com/css2?family=Recursive:wght,CASL,CRSV@300..800,0..1,0..1&display=swap", rel="stylesheet")
+        link (href=".perseus/static/reset.css", rel="stylesheet")
+        link (href=".perseus/static/index.css", rel="stylesheet")
+        link (href=".perseus/static/colors.css", rel="stylesheet")
     }
 }
 
