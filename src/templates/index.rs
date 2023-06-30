@@ -1,10 +1,11 @@
 use perseus::prelude::*;
 use sycamore::prelude::*;
 
+use crate::components::header::Header;
+
 fn index_page<G: Html>(cx: Scope) -> View<G> {
     view! { cx,
-        // Better styling will be in the works
-
+        Header {}
         main {
             p {
                 "Hi Hello! I'm Henry Wang, a penultimate year software engineering student at the University of Auckland."

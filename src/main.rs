@@ -1,3 +1,4 @@
+mod components;
 mod error_views;
 mod templates;
 
@@ -9,4 +10,3 @@ pub fn main<G: Html>() -> PerseusApp<G> {
         .template(crate::templates::index::get_template())
         .error_views(crate::error_views::get_error_views())
 }
-
