@@ -33,6 +33,9 @@ fn head(cx: Scope) -> View<SsrNode> {
         link (href=".perseus/static/reset.css", rel="stylesheet")
         link (href=".perseus/static/index.css", rel="stylesheet")
         link (href=".perseus/static/colors.css", rel="stylesheet")
+
+        // component stylesheet
+        link ( href=".perseus/static/header.css", rel="stylesheet")
     }
 }
 
