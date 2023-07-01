@@ -1,3 +1,7 @@
+:root {
+  --max-width: 960px;
+}
+
 body {
   /* Dimensions */
   min-height: 200vh;
@@ -5,7 +9,11 @@ body {
   /* Fonts */
   font-family: "Recursive", "Verdana", sans-serif;
   font-variation-settings: "CASL" 0.25, "wght" 400;
-  font-size: 1.2rem;
+  font-size: clamp(
+    1rem,
+    0.9rem + calc(min(100vw, var(--max-width)) * 0.005),
+    1.2rem
+  );
   line-height: 1.5em;
 
   /* Colours */
@@ -14,7 +22,7 @@ body {
 }
 
 main {
-  max-width: 960px;
+  max-width: var(--max-width);
   width: 100%;
   margin: auto;
 }
