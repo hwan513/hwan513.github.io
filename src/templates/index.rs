@@ -17,13 +17,13 @@ fn head(cx: Scope) -> View<SsrNode> {
 
         // general stylesheets
         link (href="https://fonts.googleapis.com/css2?family=Recursive:wght,CASL,CRSV@300..800,0..1,0..1&display=swap", rel="stylesheet")
-        link (href=".perseus/static/reset.css", rel="stylesheet")
-        link (href=".perseus/static/index.css", rel="stylesheet")
-        link (href=".perseus/static/colors.css", rel="stylesheet")
+        link (href=".perseus/static/css/reset.css", rel="stylesheet")
+        link (href=".perseus/static/css/index.css", rel="stylesheet")
+        link (href=".perseus/static/css/colors.css", rel="stylesheet")
 
         // component stylesheet
-        link ( href=".perseus/static/header.css", rel="stylesheet")
-        link ( href=".perseus/static/hero.css", rel="stylesheet")
+        link ( href=".perseus/static/css/header.css", rel="stylesheet")
+        link ( href=".perseus/static/css/hero.css", rel="stylesheet")
     }
 }
 
