@@ -1,6 +1,6 @@
 header {
   /* Positioning */
-  position: fixed;
+  position: sticky;
   z-index: 99;
   left: 0;
   top: 0;
