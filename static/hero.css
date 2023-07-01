@@ -1,0 +1,43 @@
+#hero {
+  min-height: 65vh;
+  padding: 2em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#heroWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+  gap: 2em 1em;
+}
+
+#heroWrapper > * {
+  flex: 1 1 30ch;
+}
+
+#heroText {
+  display: flex;
+  flex-direction: column;
+}
+
+#heroName {
+  font-size: clamp(
+    2.5rem,
+    calc(1.75rem + min(100vw, var(--max-width)) * (0.0375)),
+    4rem
+  );
+  line-height: 1em;
+  font-variation-settings: "CASL" 1, "wght" 500, "CRSV" 1;
+  margin: 0 0 0.2em;
+}
+
+#heroImage {
+  min-width: 200px;
+  max-width: 40%;
+  aspect-ratio: 1 / 1;
+  border: 0.1em solid var(--border-color);
+}
