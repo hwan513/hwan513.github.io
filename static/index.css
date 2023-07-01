@@ -1,14 +1,12 @@
 body {
   /* Dimensions */
   min-height: 200vh;
-  width: 100%;
-  max-width: 1234px;
-  margin: auto;
 
   /* Fonts */
   font-family: "Recursive", "Verdana", sans-serif;
-  font-variation-settings: 0, 0.25, 400, 0, 0;
-  font-size: 1rem;
+  font-variation-settings: "CASL" 0.25, "wght" 400;
+  font-size: 1.2rem;
+  line-height: 1.5em;
 
   /* Colours */
   background-color: var(--background-color);
@@ -16,8 +14,7 @@ body {
 }
 
 main {
-  padding: 2em;
-  font-size: 4vh;
-  max-width: 45ch;
-  line-height: 1.5em;
+  max-width: 960px;
+  width: 100%;
+  margin: auto;
 }
