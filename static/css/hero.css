@@ -35,6 +35,22 @@
   margin: 0 0 0.2em;
 }
 
+#heroIcons {
+  display: flex;
+  align-items: center;
+  padding: 1em 0;
+  gap: 1.2em;
+}
+
+#heroIcons img {
+  height: 1.5em;
+}
+
+#heroIcons svg {
+  height: 1.5em;
+  color: var(--primary-text-color);
+}
+
 #heroImage {
   min-width: 200px;
   max-width: 40%;

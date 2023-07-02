@@ -1,3 +1,4 @@
+use crate::components::icons::{GitHub, LinkedIn, PDF};
 use sycamore::prelude::*;
 
 #[component]
@@ -11,8 +12,11 @@ pub fn Hero<G: Html>(cx: Scope) -> View<G> {
                     p { "I am a software engineering student in my penultimate year
                     at the University of Auckland, with a passion to explore 
                     everything that can be offered by software technologies."}
-                    div (id="icons") {
 
+                    div (id="heroIcons") {
+                        a (href="https://github.com/hwan513", target="_blank") { GitHub }
+                        a (href="https://www.linkedin.com/in/henry-h-wang/", target="_blank") { LinkedIn }
+                        a (href="", target="_blank") { PDF }
                     }
                 }
                 div (id="heroImage") {
