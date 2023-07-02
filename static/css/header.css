@@ -6,7 +6,7 @@ header {
   top: 0;
 
   /* Dimensions */
-  padding: 0.5em 0;
+  padding: 1em 0;
   width: 100%;
   background-color: var(--background-color);
   box-shadow: 0 0 2px var(--border-color);
@@ -18,7 +18,7 @@ nav {
 }
 
 nav li {
-  padding: 1em;
+  padding: 0 1em;
 }
 
 nav ul {
@@ -43,7 +43,7 @@ nav a {
 
 nav a::before {
   content: "";
-  background-color: var(--primary-text-color);
+  background-color: currentColor;
 
   /* Dimensions */
   width: 100%;
@@ -52,17 +52,14 @@ nav a::before {
   border-radius: 0.07em;
 
   /* Positioning */
-  left: 50%;
   position: absolute;
-  display: block;
 
   /* Animation */
-  transform: translateX(-50%) scaleX(0);
-  transition: transform 0.3s ease-out;
-  transform-origin: 50% 100%;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
 nav a:hover::before {
-  transform: translateX(-50%) scaleX(1);
-  background-color: var(--secondary-text-color);
+  transform: scaleX(1);
+  background-color: currentColor;
 }
