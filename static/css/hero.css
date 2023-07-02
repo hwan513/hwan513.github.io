@@ -1,0 +1,73 @@
+#hero {
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#heroWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+  gap: 2em 1em;
+}
+
+#heroWrapper > * {
+  flex: 1 1 30ch;
+}
+
+#heroText {
+  display: flex;
+  flex-direction: column;
+}
+
+#heroName {
+  font-size: clamp(
+    2.5rem,
+    calc(1.75rem + min(100vw, var(--max-width)) * (0.0375)),
+    4rem
+  );
+  line-height: 1em;
+  font-variation-settings: "CASL" 1, "wght" 500, "CRSV" 1;
+}
+
+#heroIcons {
+  display: flex;
+  align-items: center;
+  padding: 1em 0;
+  gap: 1.2em;
+}
+
+#heroIcons svg {
+  height: 2em;
+}
+
+#heroIcons a {
+  color: var(--primary-text-color);
+  transition: transform 0.3s ease;
+}
+
+#heroIcons a:hover {
+  color: var(--secondary-text-color);
+  transform: translateY(-0.15em);
+}
+
+#heroImage {
+  display: flex;
+  justify-content: center;
+
+  max-width: calc(200px + 20%);
+  min-width: 200px;
+}
+
+#heroImage img {
+  object-fit: cover;
+  object-position: 0 0;
+
+  min-width: 200px;
+  max-width: 100%;
+
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
