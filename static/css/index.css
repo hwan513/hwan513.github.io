@@ -7,7 +7,7 @@ body {
 
   /* Fonts */
   font-family: "Recursive", "Verdana", sans-serif;
-  font-variation-settings: "CASL" 0.25, "wght" 400;
+  font-variation-settings: "CASL" 0.25, "wght" 375;
   font-size: clamp(
     1rem,
     0.9rem + calc(min(100vw, var(--max-width)) * 0.005),
@@ -24,4 +24,13 @@ main {
   max-width: var(--max-width);
   width: 100%;
   margin: auto;
+}
+
+h1 {
+  font-variation-settings: "CASL" 0.75, "wght" 425;
+  font-size: clamp(
+    2rem,
+    1.8rem + calc(min(100vw, var(--max-width)) * 0.01),
+    2.4rem
+  );
 }
