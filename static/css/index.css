@@ -26,6 +26,10 @@ main {
   margin: auto;
 }
 
+main > section {
+  padding: 2em;
+}
+
 h1 {
   font-variation-settings: "CASL" 0.75, "wght" 425;
   font-size: clamp(
@@ -33,4 +37,5 @@ h1 {
     1.8rem + calc(min(100vw, var(--max-width)) * 0.01),
     2.4rem
   );
+  line-height: 1.5em;
 }
