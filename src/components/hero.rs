@@ -16,7 +16,7 @@ pub fn Hero<G: Html>(cx: Scope) -> View<G> {
                     div (id="heroIcons") {
                         a (href="https://github.com/hwan513", target="_blank") { GitHub }
                         a (href="https://www.linkedin.com/in/henry-h-wang/", target="_blank") { LinkedIn }
-                        a (href="/CV.pdf", target="_blank") { PDF }
+                        a (href="/CV.pdf", target="_blank", rel="external") { PDF }
                     }
                 }
                 div (id="heroImage") {
