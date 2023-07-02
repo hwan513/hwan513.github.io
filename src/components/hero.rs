@@ -6,7 +6,9 @@ pub fn Hero<G: Html>(cx: Scope) -> View<G> {
     view!(cx,
         section (id="hero") {
             div (id="heroWrapper"){
+
                 div (id="heroText") {
+
                     p { "Hi there, I'm" }
                     div (id="heroName") { "Henry Wang"}
                     p { "I am a software engineering student in my penultimate year
@@ -19,8 +21,12 @@ pub fn Hero<G: Html>(cx: Scope) -> View<G> {
                         a (href="/CV.pdf", target="_blank", rel="external") { PDF }
                     }
                 }
+
                 div (id="heroImage") {
-                    img (src="", alt="Photo of Henry Wang")
+                    picture {
+                        source (srcset="/.perseus/static/images/Henry.webp")
+                        img (src=".perseus/static/images/Henry.jpg", alt="Photo portrait of Henry Wang")
+                    }
                 }
             }
         }

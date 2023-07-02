@@ -42,18 +42,26 @@
   gap: 1.2em;
 }
 
-#heroIcons img {
-  height: 1.5em;
-}
-
 #heroIcons svg {
   height: 1.5em;
   color: var(--primary-text-color);
 }
 
 #heroImage {
+  display: flex;
+  justify-content: center;
+
+  max-width: calc(200px + 20%);
   min-width: 200px;
-  max-width: 40%;
+}
+
+#heroImage img {
+  object-fit: cover;
+  object-position: 0 0;
+
+  min-width: 200px;
+  max-width: 100%;
+
   aspect-ratio: 1 / 1;
-  border: 0.1em solid var(--border-color);
+  border-radius: 50%;
 }
