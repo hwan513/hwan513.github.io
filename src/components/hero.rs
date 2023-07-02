@@ -8,8 +8,8 @@ pub fn Hero<G: Html>(cx: Scope) -> View<G> {
                 div (id="heroText") {
                     p { "Hi there, I'm" }
                     div (id="heroName") { "Henry Wang"}
-                    p { "I am a penultimate software engineering student at
-                    the University of Auckland, with a passion to explore 
+                    p { "I am a software engineering student in my penultimate year
+                    at the University of Auckland, with a passion to explore 
                     everything that can be offered by software technologies."}
                     div (id="icons") {
 
