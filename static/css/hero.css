@@ -43,8 +43,17 @@
 }
 
 #heroIcons svg {
-  height: 1.5em;
+  height: 2em;
+}
+
+#heroIcons a {
   color: var(--primary-text-color);
+  transition: transform 0.3s ease;
+}
+
+#heroIcons a:hover {
+  color: var(--secondary-text-color);
+  transform: translateY(-0.15em);
 }
 
 #heroImage {
