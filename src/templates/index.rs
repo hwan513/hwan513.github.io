@@ -1,12 +1,19 @@
 use perseus::prelude::*;
 use sycamore::prelude::*;
 
-use crate::components::{header::Header, hero::Hero};
+use crate::components::{
+    about::About, contact::Contact, header::Header, hero::Hero, projects::Projects,
+};
 
 fn index_page<G: Html>(cx: Scope) -> View<G> {
     view! { cx,
         Header
-        main { Hero }
+        main {
+            Hero
+            About
+            Projects
+            Contact
+        }
     }
 }
 
