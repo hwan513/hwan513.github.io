@@ -12,7 +12,7 @@ fn NavLinks<G: Html>(cx: Scope) -> View<G> {
             ul {
                 li { a(href="#") {"Home"} }
                 li { a(href="#") {"About Me"} }
-                li { a(href="#") {"Portfolio"} }
+                li { a(href="#") {"Projects"} }
                 li { a(href="#") {"Contact"} }
             }
         }
