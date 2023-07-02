@@ -10,10 +10,10 @@ fn NavLinks<G: Html>(cx: Scope) -> View<G> {
     view!(cx,
         nav {
             ul {
-                li { a(href="#") {"Home"} }
-                li { a(href="#") {"About Me"} }
-                li { a(href="#") {"Projects"} }
-                li { a(href="#") {"Contact"} }
+                li { a(href="#hero") {"Home"} }
+                li { a(href="#about") {"About Me"} }
+                li { a(href="#projects") {"Projects"} }
+                li { a(href="#contact") {"Contact"} }
             }
         }
     )
