@@ -28,7 +28,7 @@ nav ul {
 nav a {
   text-decoration: none;
   color: var(--primary-text-color);
-  font-variation-settings: 0, 0.25, 500, 0, 0;
+  font-variation-settings: "wght" 475;
   position: relative;
 }
 
