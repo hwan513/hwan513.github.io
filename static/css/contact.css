@@ -7,13 +7,17 @@
   );
   line-height: 1.5em;
   padding-bottom: 0.25em;
+}
 
+#contactForm {
+  margin-top: 1em;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1em 2em;
 }
 
 .contact-field {
-  margin-top: 1em;
   display: flex;
   flex-direction: column;
 }
@@ -30,4 +34,13 @@
   min-height: 8em;
   overflow-y: hidden;
   height: auto;
+  resize: none;
+}
+
+.contact-field {
+  flex: 1 1 25ch;
+}
+
+.contact-field.full {
+  flex: 1 1 100%;
 }
