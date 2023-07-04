@@ -31,6 +31,7 @@ fn head(cx: Scope) -> View<SsrNode> {
         // component stylesheet
         link ( href=".perseus/static/css/header.css", rel="stylesheet")
         link ( href=".perseus/static/css/hero.css", rel="stylesheet")
+        link ( href=".perseus/static/css/contact.css", rel="stylesheet")
     }
 }
 
