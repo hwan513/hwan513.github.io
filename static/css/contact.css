@@ -23,11 +23,17 @@
 }
 
 .contact-field input,
+button.contact-field,
 .contact-field textarea {
   background: inherit;
   border: 0.1em solid var(--border-color);
   padding: 0.5em;
   border-radius: 1em;
+}
+
+button.contact-field {
+  text-align: center;
+  align-items: center;
 }
 
 .contact-field textarea {
