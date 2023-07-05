@@ -9,12 +9,17 @@ pub fn Contact<G: Html>(cx: Scope) -> View<G> {
         section (id="contact", style="min-height: 40vh;") {
             h1 { "Contact Me 👋"}
             p { "Fill the form to send me an email." }
-            form (id="contactForm"){
-                ContactForm(FieldProps::new("Full Name", "text", "contactName", "half"))
-                ContactForm(FieldProps::new("Email", "email", "contactEmail","half"))
-                ContactForm(FieldProps::new("Subject", "text", "contactSubject", "full"))
-                ContactMessage
-                ContactForm(FieldProps::new("", "submit", "Send", "full"))
+
+            fieldset () {
+                form (id="contactForm", action="https://api.web3forms.com/submit",  method="POST"){
+                    input(type="hidden", name="access_key", value="ee4bf239-f98e-42e2-ac58-aba20511b885")
+                    input(type="checkbox", name="botcheck", id="", style="display: none;")
+                    ContactField(FieldProps::new("Full Name", "text", "name", "half"))
+                    ContactField(FieldProps::new("Email", "email", "email","half"))
+                    ContactField(FieldProps::new("Subject", "text", "subject", "full"))
+                    ContactMessage
+                    button (type="submit", class="contact-field full") { "Send Message" }
+                }
             }
         }
     )
@@ -40,7 +45,7 @@ impl FieldProps {
 }
 
 #[component]
-fn ContactForm<G: Html>(cx: Scope, props: FieldProps) -> View<G> {
+fn ContactField<G: Html>(cx: Scope, props: FieldProps) -> View<G> {
     let FieldProps {
         field_label,
         field_type,
@@ -76,7 +81,7 @@ fn ContactMessage<G: Html>(cx: Scope) -> View<G> {
     };
 
     view!(cx,
-        div(class="contact-field") {
+        div(class="contact-field full") {
             label(for="contactMessage") { "Message" }
             textarea(
                 // ref=node_ref,
