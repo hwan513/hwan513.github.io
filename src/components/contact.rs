@@ -70,7 +70,6 @@ fn ContactMessage<G: Html>(cx: Scope) -> View<G> {
         {
             let document = window().unwrap().document().unwrap();
             let contact_message = document.get_element_by_id("contactMessage").unwrap();
-            contact_message.scroll_height();
             message_height.set(0);
             message_height.set(contact_message.scroll_height());
         }
