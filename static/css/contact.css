@@ -1,12 +1,12 @@
 #contact label {
   font-variation-settings: "CASL" 0.25, "wght" 400;
   font-size: clamp(
-    1.2rem,
-    1.1rem + calc(min(100vw, var(--max-width)) * 0.005),
-    1.4rem
+    1.1rem,
+    1rem + calc(min(100vw, var(--max-width)) * 0.005),
+    1.3rem
   );
   line-height: 1.5em;
-  padding-bottom: 0.25em;
+  padding-bottom: 0.1em;
 }
 
 #contactForm {
