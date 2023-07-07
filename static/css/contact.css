@@ -43,7 +43,7 @@ button.contact-field {
   resize: none;
 }
 
-.contact-field {
+.contact-field.half {
   flex: 1 1 25ch;
 }
 
