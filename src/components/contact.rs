@@ -1,70 +1,113 @@
-use sycamore::prelude::*;
+use std::rc::Rc;
+
+use reqwest;
+use serde::{Deserialize, Serialize};
+use serde_json;
+use sycamore::{futures::spawn_local_scoped, prelude::*, rt::Event};
 
 #[cfg(client)]
 use web_sys::window;
 
+enum FormStatus {}
+
 #[component]
 pub fn Contact<G: Html>(cx: Scope) -> View<G> {
+    let form_complete = create_signal(cx, false);
     view!(cx,
         section (id="contact", style="min-height: 40vh;") {
             h1 { "Contact Me 👋"}
             p { "Fill the form to send me an email." }
+            ContactForm (form_complete=form_complete)
+        }
+    )
+}
 
-            fieldset () {
-                form (id="contactForm", action="https://api.web3forms.com/submit",  method="POST"){
-                    input(type="hidden", name="access_key", value="ee4bf239-f98e-42e2-ac58-aba20511b885")
-                    input(type="checkbox", name="botcheck", id="", style="display: none;")
-                    ContactField(FieldProps::new("Full Name", "text", "name", "half"))
-                    ContactField(FieldProps::new("Email", "email", "email","half"))
-                    ContactField(FieldProps::new("Subject", "text", "subject", "full"))
-                    ContactMessage
-                    button (type="submit", class="contact-field full") { "Send Message" }
+#[derive(Serialize, Deserialize)]
+struct ContactDetails {
+    access_key: String,
+    name: Rc<String>,
+    email: Rc<String>,
+    subject: Rc<String>,
+    message: Rc<String>,
+}
+
+impl ContactDetails {
+    fn new(name: Rc<String>, email: Rc<String>, subject: Rc<String>, message: Rc<String>) -> Self {
+        Self {
+            access_key: String::from("ee4bf239-f98e-42e2-ac58-aba20511b885"),
+            name,
+            email,
+            subject,
+            message,
+        }
+    }
+}
+
+#[component(inline_props)]
+fn ContactForm<'a, G: Html>(cx: Scope<'a>, form_complete: &'a Signal<bool>) -> View<G> {
+    let botcheck = create_signal(cx, false);
+    let name = create_signal(cx, String::new());
+    let email = create_signal(cx, String::new());
+    let subject = create_signal(cx, String::new());
+    let mesage = create_signal(cx, String::new());
+    let submit_handler = move |e: Event| {
+        spawn_local_scoped(cx, async move {
+            e.prevent_default();
+            if *botcheck.get() {
+                return;
+            }
+
+            let contact_details =
+                ContactDetails::new(name.get(), email.get(), subject.get(), mesage.get());
+
+            let json = serde_json::to_string(&contact_details).unwrap();
+
+            let client = reqwest::Client::new();
+            // TODO: add styling for form handling
+            let _res = client
+                .post("https://api.web3forms.com/submit")
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json")
+                .body(json)
+                .send()
+                .await
+                .unwrap();
+            form_complete.set(true);
+        })
+    };
+
+    view!(cx,
+        fieldset () {
+            form (on:submit=submit_handler, id="contactForm", action="https://api.web3forms.com/submit",  method="POST"){
+
+                input(type="hidden", name="access_key", value="ee4bf239-f98e-42e2-ac58-aba20511b885")
+                input(bind:checked=botcheck, type="checkbox", name="botcheck", id="", style="display:none")
+
+                div (class="contact-field half") {
+                    label (for="contactName"){ "Full Name" }
+                    input (bind:value=name, type="text", name="name", id="contactName", required=true)
                 }
+
+                div (class="contact-field half") {
+                    label (for="contactEmail"){ "Email" }
+                    input (bind:value=email, type="email", name="email", id="contactEmail", required=true)
+                }
+
+                div (class="contact-field full") {
+                    label (for="contactSubject"){ "Subject" }
+                    input (bind:value=subject, type="text", name="subject", id="contactSubject", required=true)
+                }
+
+                ContactMessage(bind_value=mesage)
+
+                button (type="submit", class="contact-field full") { "Send Message" }
             }
         }
     )
 }
 
-#[derive(Prop)]
-struct FieldProps {
-    field_label: String,
-    field_type: String,
-    field_name: String,
-    field_class: String,
-}
-
-impl FieldProps {
-    fn new(field_label: &str, field_type: &str, field_name: &str, field_class: &str) -> Self {
-        Self {
-            field_label: field_label.to_string(),
-            field_type: field_type.to_string(),
-            field_name: field_name.to_string(),
-            field_class: field_class.to_string(),
-        }
-    }
-}
-
-#[component]
-fn ContactField<G: Html>(cx: Scope, props: FieldProps) -> View<G> {
-    let FieldProps {
-        field_label,
-        field_type,
-        field_name,
-        field_class,
-    } = props;
-    let field_name_clone = field_name.clone();
-    let field_name_clone_clone = field_name.clone();
-
-    view!(cx,
-        div(class=(format!("contact-field {field_class}"))) {
-            label (for=field_name){ (field_label) }
-            input (type=field_type, name=field_name_clone, id=field_name_clone_clone, required=true)
-        }
-    )
-}
-
-#[component]
-fn ContactMessage<G: Html>(cx: Scope) -> View<G> {
+#[component(inline_props)]
+fn ContactMessage<'a, G: Html>(cx: Scope<'a>, bind_value: &'a Signal<String>) -> View<G> {
     let message_height = create_signal(cx, 0);
 
     // TODO: see if I can actually use the node_ref
@@ -85,6 +128,7 @@ fn ContactMessage<G: Html>(cx: Scope) -> View<G> {
             label(for="contactMessage") { "Message" }
             textarea(
                 // ref=node_ref,
+                bind:value=bind_value,
                 on:input=input_handler,
                 style=format!("height: calc({}px - 1em)", message_height.get()),
                 name="contactMessage",
