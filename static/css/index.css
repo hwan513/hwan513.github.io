@@ -45,3 +45,26 @@ h1 {
   );
   line-height: 1.5em;
 }
+
+h2 {
+  font-variation-settings: "CASL" 0.75, "wght" 425;
+  font-size: clamp(
+    1.6rem,
+    1.4rem + calc(min(100vw, var(--max-width)) * 0.01),
+    2rem
+  );
+  line-height: 1.5em;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  cursor: pointer;
+  color: var(--secondary-text-color);
+}
+
+button:hover {
+  cursor: pointer;
+}

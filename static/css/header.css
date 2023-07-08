@@ -32,10 +32,6 @@ nav a {
   position: relative;
 }
 
-nav a:hover {
-  color: var(--secondary-text-color);
-}
-
 nav a {
   text-decoration: none;
   position: relative;

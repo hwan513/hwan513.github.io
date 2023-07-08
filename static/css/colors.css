@@ -1,6 +1,9 @@
 :root {
   --background-color: #e0e1dd;
+  --background-color-rgb: 224, 225, 221;
   --primary-text-color: #0d1b2a;
   --border-color: #415a77;
   --secondary-text-color: #415a77;
+  --accent-color: #ff8484;
+  --accent-color-hover: #ef7474;
 }

@@ -27,3 +27,20 @@ pub fn LinkedIn<G: Html>(cx: Scope) -> View<G> {
         }
     )
 }
+
+#[component]
+pub fn Send<G: Html>(cx: Scope) -> View<G> {
+    view!(cx,
+        svg (xmlns="http://www.w3.org/2000/svg", viewBox="0 0 512 512") {
+            path (fill="currentColor", stroke="currentColor", d="M476.59 227.05l-.16-.07L49.35 49.84A23.56 23.56 0 0027.14 52 24.65 24.65 0 0016 72.59v113.29a24 24 0 0019.52 23.57l232.93 43.07a4 4 0 010 7.86L35.53 303.45A24 24 0 0016 327v113.31A23.57 23.57 0 0026.59 460a23.94 23.94 0 0013.22 4 24.55 24.55 0 009.52-1.93L476.4 285.94l.19-.09a32 32 0 000-58.8z")
+        }
+    )
+}
+
+pub fn Plane<G: Html>(cx: Scope) -> View<G> {
+    view!(cx,
+        svg (xmlns="http://www.w3.org/2000/svg", viewBox="0 0 512 512") {
+            path (fill="currentColor", stroke="currentColor", d="M473 39.05a24 24 0 00-25.5-5.46L47.47 185h-.08a24 24 0 001 45.16l.41.13 137.3 58.63a16 16 0 0015.54-3.59L422 80a7.07 7.07 0 0110 10L226.66 310.26a16 16 0 00-3.59 15.54l58.65 137.38c.06.2.12.38.19.57 3.2 9.27 11.3 15.81 21.09 16.25h1a24.63 24.63 0 0023-15.46L478.39 64.62A24 24 0 00473 39.05z")
+        }
+    )
+}
