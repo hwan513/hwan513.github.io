@@ -138,7 +138,7 @@ fn ContactForm<'a, G: Html>(cx: Scope<'a>, form_status: &'a Signal<FormStatus>) 
     };
 
     view!(cx,
-        fieldset () {
+        fieldset (disabled=!matches!(*form_status.get(), FormStatus::Active)) {
             form (on:submit=submit_handler, id="contactForm"){
                 input(bind:checked=botcheck, type="checkbox", name="botcheck", id="", style="display:none")
 
