@@ -1,13 +1,14 @@
-use std::rc::Rc;
-
 use reqwest::{Client, StatusCode};
 use serde::{Deserialize, Serialize};
 use serde_json;
+use std::rc::Rc;
 use sycamore::{
     futures::spawn_local_scoped,
     prelude::*,
     rt::{Event, JsCast},
 };
+
+use crate::components::icons::{GitHub, Plane, Send};
 
 #[cfg(client)]
 use web_sys::{window, HtmlFormElement};
@@ -26,7 +27,7 @@ pub fn Contact<G: Html>(cx: Scope) -> View<G> {
     view!(cx,
         section (id="contact", style="min-height: 40vh;") {
             h1 { "Contact Me 👋"}
-            p { "Fill the form to send me an email." }
+            p { "Fill in the form to send me an email." }
             ContactForm (form_status=form_status)
             FormOverlay (form_status=form_status)
         }
