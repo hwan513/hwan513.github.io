@@ -2,16 +2,15 @@ use reqwest::{Client, StatusCode};
 use serde::{Deserialize, Serialize};
 use serde_json;
 use std::rc::Rc;
-use sycamore::{
-    futures::spawn_local_scoped,
-    prelude::*,
-    rt::{Event, JsCast},
-};
+use sycamore::{futures::spawn_local_scoped, prelude::*, rt::Event};
 
-use crate::components::icons::{GitHub, Plane, Send};
+use crate::components::icons::Plane;
 
 #[cfg(client)]
-use web_sys::{window, HtmlFormElement};
+use {
+    sycamore::rt::JsCast,
+    web_sys::{window, HtmlFormElement},
+};
 
 #[derive(Clone, Copy)]
 enum FormStatus {
