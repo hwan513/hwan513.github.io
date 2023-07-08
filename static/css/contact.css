@@ -76,14 +76,21 @@ button.contact-field {
 }
 
 .form-submit {
-  justify-self: flex-end;
   background-color: var(--accent-color);
   padding: 0.5em 2em;
   border-radius: 0.5em;
   transition: transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
 }
 
 .form-submit:hover {
   transform: translateY(-0.15em);
   background-color: var(--accent-color-hover);
+}
+
+.form-submit svg {
+  height: 1em;
 }
