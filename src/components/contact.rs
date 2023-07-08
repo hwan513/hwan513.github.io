@@ -141,7 +141,9 @@ fn ContactForm<'a, G: Html>(cx: Scope<'a>, form_status: &'a Signal<FormStatus>) 
 
                 ContactMessage(bind_value=mesage)
 
-                button (type="submit", class="contact-field full") { "Send Message" }
+                div (class="submit-wrapper") {
+                    button (type="submit", class="form-submit") { "Send" }
+                }
             }
         }
     )

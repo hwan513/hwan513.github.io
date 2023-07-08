@@ -68,3 +68,22 @@ button.contact-field {
 .contact-field.full {
   flex: 1 1 100%;
 }
+
+.submit-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-submit {
+  justify-self: flex-end;
+  background-color: var(--accent-color);
+  padding: 0.5em 2em;
+  border-radius: 0.5em;
+  transition: transform 0.3s ease;
+}
+
+.form-submit:hover {
+  transform: translateY(-0.15em);
+  background-color: var(--accent-color-hover);
+}
