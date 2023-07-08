@@ -54,27 +54,31 @@ impl ContactDetails {
 fn FormOverlay<'a, G: Html>(cx: Scope<'a>, form_status: &'a Signal<FormStatus>) -> View<G> {
     // let thing = "Sending in progress: Please wait. Message successfully sent: Send another. Error has occured: t(y again";
     use FormStatus::*;
-    match *form_status.get() {
-        Active => view!(cx,),
-        Success => view!(cx,
-            div (id="formOverlay") {
-                h2 { "Message sent successfully!"}
-                a (on:click=|_| form_status.set(Active)) { "Send another" }
-            }
-        ),
-        Err => view!(cx,
-            div (id="formOverlay") {
-                h2 { "An error has occured"}
-                a (on:click=|_| form_status.set(Active)) { "Try again" }
-            }
-        ),
-        Pending => view!(cx,
-            div (id="formOverlay") {
-                h2 { "Sending in progress"}
-                p { "Please wait..." }
-            }
-        ),
-    }
+    let status = create_memo(cx, || *form_status.get());
+    view!(
+        cx,
+        (match *status.get() {
+            Active => view!(cx,),
+            Success => view!(cx,
+                div (id="formOverlay") {
+                    h2 { "Message sent successfully!"}
+                    a (on:click=|_| form_status.set(Active)) { "Send another" }
+                }
+            ),
+            Err => view!(cx,
+                div (id="formOverlay") {
+                    h2 { "An error has occured"}
+                    a (on:click=|_| form_status.set(Active)) { "Try again" }
+                }
+            ),
+            Pending => view!(cx,
+                div (id="formOverlay") {
+                    h2 { "Sending in progress"}
+                    p { "Please wait..." }
+                }
+            ),
+        })
+    )
 }
 
 #[component(inline_props)]
@@ -91,7 +95,7 @@ fn ContactForm<'a, G: Html>(cx: Scope<'a>, form_status: &'a Signal<FormStatus>) 
             if *botcheck.get() {
                 return;
             }
-            form_status.set(FormStatus::Success);
+            form_status.set(FormStatus::Pending);
 
             let contact_details =
                 ContactDetails::new(name.get(), email.get(), subject.get(), mesage.get());
