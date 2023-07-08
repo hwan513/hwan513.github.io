@@ -97,9 +97,11 @@ fn ContactForm<'a, G: Html>(cx: Scope<'a>, form_status: &'a Signal<FormStatus>) 
 
             let json = serde_json::to_string(&contact_details).unwrap();
 
-            let client = reqwest::Client::new();
-            // TODO: add styling for form handling
-            let _res = client
+            let client = reqwest::Client::builder()
+                .timeout(Duration::from_secs(3))
+                .build()
+                .unwrap();
+            let res = client
                 .post("https://api.web3forms.com/submit")
                 .header("Content-Type", "application/json")
                 .header("Accept", "application/json")
