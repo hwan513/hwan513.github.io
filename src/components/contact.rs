@@ -1,6 +1,6 @@
 use std::{rc::Rc, time::Duration};
 
-use reqwest;
+use reqwest::{Client, StatusCode};
 use serde::{Deserialize, Serialize};
 use serde_json;
 use sycamore::{futures::spawn_local_scoped, prelude::*, rt::Event};
@@ -18,7 +18,7 @@ enum FormStatus {
 
 #[component]
 pub fn Contact<G: Html>(cx: Scope) -> View<G> {
-    let form_status = create_signal(cx, FormStatus::Pending);
+    let form_status = create_signal(cx, FormStatus::Active);
     view!(cx,
         section (id="contact", style="min-height: 40vh;") {
             h1 { "Contact Me 👋"}
@@ -84,39 +84,42 @@ fn ContactForm<'a, G: Html>(cx: Scope<'a>, form_status: &'a Signal<FormStatus>) 
     let email = create_signal(cx, String::new());
     let subject = create_signal(cx, String::new());
     let mesage = create_signal(cx, String::new());
+
     let submit_handler = move |e: Event| {
         spawn_local_scoped(cx, async move {
             e.prevent_default();
             if *botcheck.get() {
                 return;
             }
-            form_status.set(FormStatus::Pending);
+            form_status.set(FormStatus::Success);
 
             let contact_details =
                 ContactDetails::new(name.get(), email.get(), subject.get(), mesage.get());
 
             let json = serde_json::to_string(&contact_details).unwrap();
 
-            let client = reqwest::Client::builder()
-                .timeout(Duration::from_secs(3))
-                .build()
-                .unwrap();
-            let res = client
-                .post("https://api.web3forms.com/submit")
-                .header("Content-Type", "application/json")
-                .header("Accept", "application/json")
-                .body(json)
-                .send()
-                .await
-                .unwrap();
+            // let client = Client::builder()
+            //     .timeout(Duration::from_secs(3))
+            //     .build()
+            //     .unwrap();
+            // let res = client
+            //     .post("https://api.web3forms.com/submit")
+            //     .header("Content-Type", "application/json")
+            //     .header("Accept", "application/json")
+            //     .body(json)
+            //     .send()
+            //     .await
+            //     .unwrap();
+            // match res.status() {
+            //     StatusCode::OK => form_status.set(FormStatus::Success),
+            //     _ => form_status.set(FormStatus::Err),
+            // }
         })
     };
 
     view!(cx,
         fieldset () {
             form (on:submit=submit_handler, id="contactForm"){
-
-                input(type="hidden", name="access_key", value="ee4bf239-f98e-42e2-ac58-aba20511b885")
                 input(bind:checked=botcheck, type="checkbox", name="botcheck", id="", style="display:none")
 
                 div (class="contact-field half") {
