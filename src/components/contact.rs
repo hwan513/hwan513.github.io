@@ -1,4 +1,4 @@
-use std::rc::Rc;
+use std::{rc::Rc, time::Duration};
 
 use reqwest;
 use serde::{Deserialize, Serialize};
@@ -8,16 +8,23 @@ use sycamore::{futures::spawn_local_scoped, prelude::*, rt::Event};
 #[cfg(client)]
 use web_sys::window;
 
-enum FormStatus {}
+#[derive(Clone, Copy)]
+enum FormStatus {
+    Active,
+    Pending,
+    Success,
+    Err,
+}
 
 #[component]
 pub fn Contact<G: Html>(cx: Scope) -> View<G> {
-    let form_complete = create_signal(cx, false);
+    let form_status = create_signal(cx, FormStatus::Pending);
     view!(cx,
         section (id="contact", style="min-height: 40vh;") {
             h1 { "Contact Me 👋"}
             p { "Fill the form to send me an email." }
-            ContactForm (form_complete=form_complete)
+            ContactForm (form_status=form_status)
+            FormOverlay (form_status=form_status)
         }
     )
 }
@@ -44,7 +51,34 @@ impl ContactDetails {
 }
 
 #[component(inline_props)]
-fn ContactForm<'a, G: Html>(cx: Scope<'a>, form_complete: &'a Signal<bool>) -> View<G> {
+fn FormOverlay<'a, G: Html>(cx: Scope<'a>, form_status: &'a Signal<FormStatus>) -> View<G> {
+    // let thing = "Sending in progress: Please wait. Message successfully sent: Send another. Error has occured: t(y again";
+    use FormStatus::*;
+    match *form_status.get() {
+        Active => view!(cx,),
+        Success => view!(cx,
+            div (id="formOverlay") {
+                h2 { "Message sent successfully!"}
+                a (on:click=|_| form_status.set(Active)) { "Send another" }
+            }
+        ),
+        Err => view!(cx,
+            div (id="formOverlay") {
+                h2 { "An error has occured"}
+                a (on:click=|_| form_status.set(Active)) { "Try again" }
+            }
+        ),
+        Pending => view!(cx,
+            div (id="formOverlay") {
+                h2 { "Sending in progress"}
+                p { "Please wait..." }
+            }
+        ),
+    }
+}
+
+#[component(inline_props)]
+fn ContactForm<'a, G: Html>(cx: Scope<'a>, form_status: &'a Signal<FormStatus>) -> View<G> {
     let botcheck = create_signal(cx, false);
     let name = create_signal(cx, String::new());
     let email = create_signal(cx, String::new());
@@ -56,6 +90,7 @@ fn ContactForm<'a, G: Html>(cx: Scope<'a>, form_complete: &'a Signal<bool>) -> V
             if *botcheck.get() {
                 return;
             }
+            form_status.set(FormStatus::Pending);
 
             let contact_details =
                 ContactDetails::new(name.get(), email.get(), subject.get(), mesage.get());
@@ -72,7 +107,6 @@ fn ContactForm<'a, G: Html>(cx: Scope<'a>, form_complete: &'a Signal<bool>) -> V
                 .send()
                 .await
                 .unwrap();
-            form_complete.set(true);
         })
     };
 
