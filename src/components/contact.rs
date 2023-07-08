@@ -1,12 +1,16 @@
-use std::{rc::Rc, time::Duration};
+use std::rc::Rc;
 
 use reqwest::{Client, StatusCode};
 use serde::{Deserialize, Serialize};
 use serde_json;
-use sycamore::{futures::spawn_local_scoped, prelude::*, rt::Event};
+use sycamore::{
+    futures::spawn_local_scoped,
+    prelude::*,
+    rt::{Event, JsCast},
+};
 
 #[cfg(client)]
-use web_sys::window;
+use web_sys::{window, HtmlFormElement};
 
 #[derive(Clone, Copy)]
 enum FormStatus {
@@ -55,6 +59,19 @@ fn FormOverlay<'a, G: Html>(cx: Scope<'a>, form_status: &'a Signal<FormStatus>) 
     // let thing = "Sending in progress: Please wait. Message successfully sent: Send another. Error has occured: t(y again";
     use FormStatus::*;
     let status = create_memo(cx, || *form_status.get());
+    let clear_form = |_| {
+        form_status.set(Active);
+        #[cfg(client)]
+        {
+            let document = window().unwrap().document().unwrap();
+            document
+                .get_element_by_id("contactForm")
+                .unwrap()
+                .unchecked_into::<HtmlFormElement>()
+                .reset();
+        }
+    };
+
     view!(
         cx,
         (match *status.get() {
@@ -62,7 +79,7 @@ fn FormOverlay<'a, G: Html>(cx: Scope<'a>, form_status: &'a Signal<FormStatus>) 
             Success => view!(cx,
                 div (id="formOverlay") {
                     h2 { "Message sent successfully!"}
-                    a (on:click=|_| form_status.set(Active)) { "Send another" }
+                    a (on:click=clear_form) { "Send another" }
                 }
             ),
             Err => view!(cx,
