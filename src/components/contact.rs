@@ -114,7 +114,7 @@ fn ContactForm<'a, G: Html>(cx: Scope<'a>, form_status: &'a Signal<FormStatus>) 
 
     view!(cx,
         fieldset () {
-            form (on:submit=submit_handler, id="contactForm", action="https://api.web3forms.com/submit",  method="POST"){
+            form (on:submit=submit_handler, id="contactForm"){
 
                 input(type="hidden", name="access_key", value="ee4bf239-f98e-42e2-ac58-aba20511b885")
                 input(bind:checked=botcheck, type="checkbox", name="botcheck", id="", style="display:none")
