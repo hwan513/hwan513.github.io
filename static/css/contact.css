@@ -79,7 +79,7 @@ button.contact-field {
   background-color: var(--accent-color);
   padding: 0.5em 2em;
   border-radius: 0.5em;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,6 +89,10 @@ button.contact-field {
 .form-submit:hover {
   transform: translateY(-0.15em);
   background-color: var(--accent-color-hover);
+}
+
+.form-submit:active {
+  transform: scale(0.98);
 }
 
 .form-submit svg {
