@@ -53,6 +53,10 @@
   transform: translateY(-0.15em);
 }
 
+#heroIcons a:active {
+  transform: scale(0.95);
+}
+
 #heroImage {
   display: flex;
   justify-content: center;
