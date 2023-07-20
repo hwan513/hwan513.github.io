@@ -12,6 +12,7 @@ sycamore = { version = "^0.8.1", features = [ "suspense" ] }
 serde = { version = "1", features = [ "derive", "rc" ] }
 serde_json = "1"
 reqwest = "0.11.18"
+markdown = "1.0.0-alpha.11"
 
 # Engine-only dependencies go here
 [target.'cfg(engine)'.dependencies]
