@@ -37,6 +37,7 @@ pub fn Send<G: Html>(cx: Scope) -> View<G> {
     )
 }
 
+#[component]
 pub fn Plane<G: Html>(cx: Scope) -> View<G> {
     view!(cx,
         svg (xmlns="http://www.w3.org/2000/svg", viewBox="0 0 512 512") {
