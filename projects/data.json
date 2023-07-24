@@ -1,0 +1,11 @@
+[
+  {
+    "id": "portfolio",
+    "name": "Portfolio Website",
+    "technologies": ["Rust", "Sycamore", "Perseus", "CSS"],
+    "description": "This website! It is my exploration into the front-end capabilities of Rust’s. The site is built using Sycamore, which is a framework that compiles written Rust code into HTML and WebAssembly. Perseus is used to generate a static site at build time and I have used vanilla CSS to allow fine-grained control over the design. It is currently hosted on GitHub pages with the build and deployment process automated using a GitHub action.",
+    "repo": "https://github.com/hwan513/hwan513.github.io",
+    "image": "portfolio.webp",
+    "alt_text": "Hero section of the portfolio website for Henry Wang"
+  }
+]
