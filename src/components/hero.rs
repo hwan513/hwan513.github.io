@@ -24,7 +24,7 @@ pub fn Hero<G: Html>(cx: Scope) -> View<G> {
 
                 div (id="heroImage") {
                     picture {
-                        source (srcset="/.perseus/static/images/HenryCropped.webp")
+                        source (srcset=".perseus/static/images/HenryCropped.webp")
                         img (src=".perseus/static/images/HenryCropped.jpg", alt="Photo portrait of Henry Wang")
                     }
                 }
