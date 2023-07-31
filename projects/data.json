@@ -1,0 +1,38 @@
+[
+  {
+    "id": "portfolio",
+    "name": "Portfolio Website",
+    "technologies": ["Rust", "Sycamore", "Perseus", "Figma", "CSS"],
+    "description": "This website! It is my exploration into the front-end capabilities of Rust’s. I first created the design for the site in Figma, and then built it using Sycamore—a framework that compiles written Rust code into HTML and WebAssembly. Perseus is used to generate a static site at build time and vanilla CSS allows for fine-grained control over the design. It is currently hosted on GitHub pages with the build and deployment process automated using a GitHub action.",
+    "repo": "https://github.com/hwan513/hwan513.github.io",
+    "image": "portfolio1",
+    "alt_text": "Hero section of the portfolio website for Henry Wang"
+  },
+  {
+    "id": "quickDraw",
+    "name": "Quick, Draw!",
+    "technologies": ["Java", "JavaFX", "Maven"],
+    "description": "Quick, Draw! is a Java-based desktop game for young adults, where players practice speed drawing. It uses JavaFX for the GUI and a neural network to guess the drawings. The game offers various difficulty levels, three game modes (Classic, Hidden Word, and Zen), and allows users to create custom profiles with profile pictures, player statistics, and badges. Created in a group of three, I was responsible for the various game modes, profile pictures, and providing feedback on pull requests.",
+    "repo": "",
+    "image": "quickDraw1",
+    "alt_text": "A round of Quick Draw gameplay"
+  },
+  {
+    "id": "pdfMerger",
+    "name": "Simple PDF Merger",
+    "technologies": ["Rust", "egui", "lopdf"],
+    "description": "This is a simple utility I created to assist in merging the numerous lecture slides provided in my university courses. It utilizes the Rust library lopdf to programmatically merge PDFs. Apart from merging, it offers additional features like generating a table of contents for each PDF and removing highly similar pages compared to their preceding ones. The UI is built using the Rust UI framework egui, enabling users to easily drag and drop PDFs or add them through a file browser.",
+    "repo": "https://github.com/hwan513/simple-pdf-merger",
+    "image": "pdfMerger1",
+    "alt_text": "Main screen for PDF merging application with a list of PDF to merge"
+  },
+  {
+    "id": "fileSystem",
+    "name": "Virtual File System",
+    "technologies": ["C", "GNU make"],
+    "description": "I designed and implemented a basic linked allocation file system that writes its contents to a virtual device created using the C mmap call. The virtual device is then stored on disk using a backing file. The file system enables the creation of directories and files in a tree structure, as well as read, write, and append operations on existing files. Additionally, it supports the listing of all files and directories (along with their sizes) stored within a subdirectory",
+    "repo": "",
+    "image": "",
+    "alt_text": ""
+  }
+]

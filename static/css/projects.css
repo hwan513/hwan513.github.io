@@ -1,0 +1,42 @@
+.project {
+  scroll-margin-top: 3em;
+  padding: 2em 0;
+  /* margin: 1em 0 0; */
+  border-top: 1px solid black;
+
+  display: flex;
+  gap: 2em;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+}
+
+.project-text {
+  flex: 3 1 30ch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.project-image {
+  display: flex;
+  flex: 2 1 200px;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 100%;
+  min-width: 200px;
+}
+
+.project-image img {
+  object-fit: contain;
+
+  min-width: 200px;
+  max-width: 100%;
+
+  aspect-ratio: 1 / 1;
+  border-radius: 1em;
+}
+
+.project-technologies {
+  color: var(--secondary-text-color);
+}
