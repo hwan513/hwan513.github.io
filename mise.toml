@@ -1,0 +1,3 @@
+[tools]
+"ubi:leptos-rs/cargo-leptos" = "latest"
+"ubi:bram209/leptosfmt" = "latest"

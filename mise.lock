@@ -1,0 +1,10 @@
+[tools."ubi:bram209/leptosfmt"]
+version = "0.1.33"
+backend = "ubi:bram209/leptosfmt"
+
+[tools."ubi:bram209/leptosfmt".checksums]
+leptosfmt-macos-aarch64 = "sha256:1cda325c01b8748b4d27f21357b7f134471aa542a7ac5d98574986e88b307a4f"
+
+[tools."ubi:leptos-rs/cargo-leptos"]
+version = "0.2.35"
+backend = "ubi:leptos-rs/cargo-leptos"
