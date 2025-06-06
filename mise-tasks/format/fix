@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#MISE description="Fix formatting in rust files"
+#MISE sources=["src/**/*.rs"]
+#MISE outputs={auto=true}
+echo "Fixing rust formatting"
+cargo fmt
+echo && echo "Fixing rstml formatting"
+leptosfmt ./src

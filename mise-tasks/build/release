@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#MISE description="Reproducibly build the portfolio application with optimizations"
+#MISE sources=["src/**/*", "Cargo.lock"]
+#MISE outputs={auto=true}
+cargo leptos build --release \
+  --bin-cargo-args="--locked" \
+  --lib-cargo-args="--locked" \
+  --lib-cargo-args="-Z=build-std=std,panic_abort,core,alloc" \
+  --lib-cargo-args="-Z=build-std-features=panic_immediate_abort,optimize_for_size"

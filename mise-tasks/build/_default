@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Build the portfolio application"
+#MISE sources=["src/**/*", "Cargo.lock"]
+#MISE outputs={auto=true}
+cargo leptos build

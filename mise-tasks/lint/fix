@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Fix linting errors in rust files"
+#MISE sources=["src/**/*.rs"]
+#MISE outputs={auto=true}
+cargo clippy --all-features --fix

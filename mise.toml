@@ -1,3 +1,8 @@
 [tools]
 "ubi:leptos-rs/cargo-leptos" = "latest"
 "ubi:bram209/leptosfmt" = "latest"
+
+[tasks.update-scripts]
+run = "chmod -R +x mise-tasks/"
+description = "Update scripts execution permissions defined in mise-tasks"
+sources = ["mise-tasks/**/*"]
