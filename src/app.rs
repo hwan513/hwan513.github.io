@@ -1,8 +1,9 @@
 use leptos::prelude::*;
 use leptos_meta::{MetaTags, Stylesheet, Title, provide_meta_context};
 use leptos_router::{
-    StaticSegment,
+    SsrMode, StaticSegment,
     components::{Route, Router, Routes},
+    static_routes::StaticRoute,
 };
 
 #[must_use]
@@ -24,6 +25,7 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
     }
 }
 
+/// Entry point for the web application
 #[component]
 #[allow(clippy::must_use_candidate)]
 pub fn App() -> impl IntoView {
@@ -31,18 +33,22 @@ pub fn App() -> impl IntoView {
     provide_meta_context();
 
     view! {
-        // injects a stylesheet into the document <head>
         // id=leptos means cargo-leptos will hot-reload this stylesheet
+        // Injects a stylesheet into the document <head>
         <Stylesheet id="leptos" href="/pkg/portfolio.css" />
 
         // sets the document title
         <Title text="Welcome to Leptos" />
-
         // content for this welcome page
+
         <Router>
             <main>
                 <Routes fallback=|| "Page not found.".into_view()>
-                    <Route path=StaticSegment("") view=HomePage />
+                    <Route
+                        path=StaticSegment("")
+                        view=HomePage
+                        ssr=SsrMode::Static(StaticRoute::new())
+                    />
                 </Routes>
             </main>
         </Router>

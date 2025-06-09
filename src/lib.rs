@@ -1,5 +1,6 @@
 pub mod app;
 
+///This is used when running the dev server.
 #[cfg(feature = "hydrate")]
 #[wasm_bindgen::prelude::wasm_bindgen]
 pub fn hydrate() {
