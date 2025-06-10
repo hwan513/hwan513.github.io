@@ -9,7 +9,7 @@ pub fn About() -> impl IntoView {
                 <h1>"About me 👨‍💻"</h1>
             </article>
             <picture>
-                <img src="/assets/me.jpg" alt="Picture of me" />
+                <img src="/images/painting.jpg" alt="Painting of bird, some fish, and a sunset" />
             </picture>
         </section>
     }

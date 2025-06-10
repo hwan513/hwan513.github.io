@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+#MISE description="Compress jpg and png images in assets/images to WebP, AVIF, and JPEG XL"
+#MISE sources=["assets/*.png", "assets/*.jpg"]
+#MISE outputs={auto=true}
+
+TARGET_DIR=assets
+# TODO: Update this to take in arguments
+FILE_TYPE="png"
+
+# Set quality level (same across all formats)
+QUALITY=75
+WEBP_EFFORT=6 # 6 is max
+AVIF_EFFORT=9
+JXL_EFFORT=9
+
+# Find all PNG files in the current directory
+echo "$TARGET_DIR"/**/*."$FILE_TYPE"
+for file in "$TARGET_DIR"/**/*."$FILE_TYPE"; do
+  [ -e "$file" ] || continue
+
+  base="${file%.$FILE_TYPE}"
+  echo "Converting: $file"
+
+  # Convert to WebP
+  vips copy "$file" "${base}.webp[Q=${QUALITY},effort=${WEBP_EFFORT}]"
+
+  # Being a bit less overboard on the formats of images to serve
+
+  # # Convert to AVIF (AV1 compression via libheif)
+  # vips copy "$file" "${base}.avif[Q=${QUALITY},compression=av1,effort=${AVIF_EFFORT}]"
+  #
+  # # Convert to JPEG XL
+  # vips copy "$file" "${base}.jxl[Q=${QUALITY},effort=${JXL_EFFORT}]"
+
+done
