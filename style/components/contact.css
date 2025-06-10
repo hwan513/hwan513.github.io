@@ -30,12 +30,39 @@
     display: flex;
     flex-direction: column;
     gap: 0.2em;
-    flex: 1 1 30ch;
+    flex: 1 1 25ch;
     width: 100%;
   }
 
   & .full-width {
     flex: 1 1 100%;
     width: 100%;
+  }
+
+  & button {
+    background-color: var(--accent-color);
+    width: 20ch;
+    padding: 0.5em 2em;
+    border-radius: 0.5em;
+    border-color: transparent;
+    transition: transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  & button:hover {
+    transform: translateY(-0.15em);
+    background-color: var(--accent-color-hover);
+  }
+
+  & button:active {
+    transform: scale(0.98);
+  }
+
+  & button svg {
+    height: 1em;
   }
 }
