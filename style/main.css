@@ -3,3 +3,4 @@
 @import "typeface.css" layer(typeface);
 @import "colors.css" layer(base);
 @import "core.css" layer(base);
+@import "components/nav.css";

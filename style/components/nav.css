@@ -1,0 +1,52 @@
+nav {
+  /* Positioning */
+  position: sticky;
+  z-index: 99;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-block: 1em;
+
+  /* Colors */
+  background-color: var(--background-color);
+  box-shadow: 0 0 2px var(--border-color);
+
+  & > a {
+    padding-inline: 1em;
+    text-decoration: none;
+    color: var(--primary-text-color);
+    font-variation-settings: "wght" 475;
+    position: relative;
+  }
+
+  & > a::before {
+    content: "";
+
+    background-color: currentColor;
+    /* Dimensions; some pretty cursed magic numbers */
+    width: calc(100% - 2em); /* removes the padding from padding-inline */
+    height: 0.14em;
+    left: 1em; /* from the text start */
+    bottom: -0.1em;
+    border-radius: 0.1em;
+
+    /* Positioning */
+    position: absolute;
+
+    /* Animation */
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+
+  & > a:hover {
+    color: var(--secondary-text-color);
+  }
+
+  & > a:hover::before {
+    transform: scaleX(1);
+    background-color: currentColor;
+  }
+}

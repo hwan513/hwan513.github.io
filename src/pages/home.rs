@@ -6,9 +6,7 @@ use crate::components::{About, Contact, Hero, Nav, Projects};
 #[component]
 pub fn HomePage() -> impl IntoView {
     view! {
-        <nav>
-            <Nav />
-        </nav>
+        <Nav />
         <main>
             <Hero />
             <About />
