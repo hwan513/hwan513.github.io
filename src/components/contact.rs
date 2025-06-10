@@ -4,6 +4,8 @@ use leptos::{ev::SubmitEvent, leptos_dom::logging::console_log, prelude::*};
 use wasm_bindgen::JsCast;
 use web_sys::{FormData, HtmlFormElement};
 
+use crate::components::Plane;
+
 /// Renders the Contact form section
 #[component]
 pub fn Contact() -> impl IntoView {
@@ -96,7 +98,7 @@ fn ContactForm() -> impl IntoView {
                     />
                 </label>
                 <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
-                <button type="submit">"Send Message"</button>
+                <button type="submit">"Send" <Plane /></button>
             </fieldset>
         </form>
     }
