@@ -1,1 +1,16 @@
+.about {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
 
+  & img {
+    font: inherit;
+    max-width: min(16em, calc(30dvw));
+    height: auto;
+    margin-block-start: 1em;
+
+    @media (max-width: 540px) {
+      display: none;
+    }
+  }
+}
