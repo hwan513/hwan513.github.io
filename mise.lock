@@ -1,3 +1,7 @@
+[tools.node]
+version = "24.1.0"
+backend = "core:node"
+
 [tools."ubi:bram209/leptosfmt"]
 version = "0.1.33"
 backend = "ubi:bram209/leptosfmt"

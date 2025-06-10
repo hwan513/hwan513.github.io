@@ -1,6 +1,7 @@
 [tools]
 "ubi:leptos-rs/cargo-leptos" = "latest"
 "ubi:bram209/leptosfmt" = "latest"
+node = { version = "latest", postinstall = "corepack enable" }
 
 [tasks.update-scripts]
 run = "chmod -R +x mise-tasks/"
