@@ -10,7 +10,7 @@ use crate::components::Plane;
 #[component]
 pub fn Contact() -> impl IntoView {
     view! {
-        <section>
+        <section id="contact">
             <h1>"Contact me 👋"</h1>
             <p>"My details are in my CV, but you can still reach me from here."</p>
             <ContactForm />
