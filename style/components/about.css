@@ -1,16 +1,19 @@
 .about {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
+  text-align: justify;
 
   & img {
+    float: right;
+    max-width: min(14em, calc(25dvw));
     font: inherit;
-    max-width: min(16em, calc(30dvw));
     height: auto;
-    margin-block-start: 1em;
+    /* bit abritrary, but it sits below the heading start */
+    margin: 5em 0 1em 1em;
 
     @media (max-width: 540px) {
       display: none;
     }
+  }
+  & ul {
+    margin-block-start: 0.5em;
   }
 }
