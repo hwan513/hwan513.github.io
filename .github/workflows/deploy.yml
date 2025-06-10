@@ -1,5 +1,4 @@
-name: Deploy Perseus site to Pages
-
+name: Deploy Build leptos site to GitHub Pages
 on:
   # Runs on pushes targeting the default branch
   push:
@@ -25,35 +24,33 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: cargo-install
-        uses: baptiste0928/cargo-install@v2
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v2
         with:
-          crate: perseus-cli
-          
-      - name: Setup pages
-        uses: actions/configure-pages@v3
-      
-      - name: Restore cache
-        uses: actions/cache@v3
+          experimental: true
+          log_level: debug
+
+      - name: Cache rust toolchain paths
+        uses: actions/cache@v4
+        id: cache
         with:
           path: |
             ~/.cargo/bin/
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
+            ~/.rustup/
             target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-        
-      - name: Build with Perseus
-        run: perseus deploy -e
-        
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/rust-toolchain.toml', '**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+
+      - name: Build application in release mode
+        run: mise run build:release
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./pkg
+          path: ./dist
 
   # Deployment job
   deploy:
