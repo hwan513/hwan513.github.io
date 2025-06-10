@@ -1,5 +1,4 @@
 name: Deploy Build leptos site to GitHub Pages
-
 on:
   # Runs on pushes targeting the default branch
   push:
