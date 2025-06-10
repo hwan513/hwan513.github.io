@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#MISE description="Check formatting in rust files"
+#MISE description="Check formatting in rust and css files"
 #MISE sources=["src/**/*.rs"]
 #MISE outputs={auto=true}
 ERR=0
@@ -7,6 +7,8 @@ echo "Checking rust formatting"
 cargo fmt --check || ERR=1 # doesn't seem to exit mise task for some reason
 echo && echo "Checking rstml formatting"
 leptosfmt ./src --check 2>&1 | grep -C 3 -E -e "✅|❌|^-|^\+" -C 2 || ERR=1
+echo && echo "Checking CSS formatting"
+biome format || ERR=1
 
 # Exit with error code if there are any errors
 if [ $ERR -eq 1 ]; then

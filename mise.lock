@@ -1,3 +1,7 @@
+[tools.biome]
+version = "1.9.4"
+backend = "aqua:biomejs/biome"
+
 [tools.node]
 version = "24.1.0"
 backend = "core:node"
