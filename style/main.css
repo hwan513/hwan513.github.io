@@ -4,3 +4,4 @@
 @import "colors.css" layer(base);
 @import "core.css" layer(base);
 @import "components/nav.css";
+@import "components/contact.css";
