@@ -2,6 +2,7 @@
 #MISE description="Reproducibly build the portfolio application with optimizations"
 #MISE sources=["src/**/*", "Cargo.lock", "style/**/*", assests/**/*"]
 #MISE outputs=["dist"]
+#MISE depends=["build:css"]
 cargo leptos serve --release \
   --bin-cargo-args="--locked" \
   --lib-cargo-args="--locked" \

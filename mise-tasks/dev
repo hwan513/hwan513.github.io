@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 #MISE description="Serve the application and watch for changes"
+mise watch build:css &
 cargo leptos watch --hot-reload

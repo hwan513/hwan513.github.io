@@ -46,7 +46,7 @@ trim-paths = "all"
 rustflags = ["-Zlocation-detail=none"]
 
 [package.metadata.leptos]
-style-file = "style/main.scss"
+style-file = "style/output.css"
 assets-dir = "assets"
 site-root = "dist"
 site-addr = "127.0.0.1:3000"

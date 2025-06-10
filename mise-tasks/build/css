@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Bundle the css files into output.css"
+#MISE sources=["style/**/*.css", "!style/output.css"]
+#MISE outputs=[style/output.css"]
+lightningcss --bundle --targets ">= 0.25%" style/main.css -o style/output.css

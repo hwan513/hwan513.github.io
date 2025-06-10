@@ -2,6 +2,8 @@
 "ubi:leptos-rs/cargo-leptos" = "latest"
 "ubi:bram209/leptosfmt" = "latest"
 biome = "latest"
+"npm:lightningcss-cli" = "latest"
+"npm:open-props" = "latest"
 
 [tasks.update-scripts]
 run = "chmod -R +x mise-tasks/"
