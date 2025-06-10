@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Reproducibly build the portfolio application with optimizations"
-#MISE sources=["src/**/*", "Cargo.lock", "style/**/*", assests/**/*"]
+#MISE sources=["src/**/*", "Cargo.lock", "style/**/*", "assets/**/*"]
 #MISE outputs=["dist"]
 #MISE depends=["build:css"]
 cargo leptos serve --release \
