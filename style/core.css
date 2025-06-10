@@ -54,6 +54,12 @@ h2 {
   line-height: 1.5em;
 }
 
+code {
+  font-variation-settings: "CASL" 1, "wght" 450, "MONO" 1;
+  font-size: var(--font-size-1);
+  letter-spacing: .02em;
+}
+
 a {
   text-decoration: underline;
 }

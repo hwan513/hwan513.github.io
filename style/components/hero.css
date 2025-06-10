@@ -1,0 +1,107 @@
+.hero {
+  min-height: 75vh;
+  margin: auto;
+  padding: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+
+/* TODO: improve loading in animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.hero .info {
+  opacity: 0.1;
+  animation: fadeIn 1s ease-in forwards;
+  animation-delay: 3s;
+  margin-block-start: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1em;
+
+  & img {
+    height: auto;
+    max-width: clamp(10em, 30dvw, 20em);
+    overflow: hidden;
+  }
+
+  & .heading {
+    font-variation-settings: "CASL" 0, "wght" 700, "MONO" 1;
+    color: var(--secondary-text-color);
+  }
+
+  & article {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & a,
+  & code {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2em;
+    align-items: center;
+  }
+
+  & span {
+    /* TODO: make this reusable */
+    font-variation-settings: "CASL" 0, "wght" 700, "MONO" 1;
+    font-size: var(--font-size-1);
+    letter-spacing: .02em;
+    color: var(--accent-text-color);
+  }
+
+  & svg {
+    height: var(--font-size-1);
+  }
+}
+
+.color-palette {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  margin-top: 1em;
+  padding: 0;
+
+  & > li {
+    width: 2em;
+    height: 2em;
+    border-color: var(--border-color);
+    border-style: solid;
+    border-width: 1px;
+  }
+
+  & > li:nth-child(1) {
+    background-color: var(--background-color);
+  }
+  & > li:nth-child(2) {
+    background-color: var(--accent-color);
+  }
+  & > li:nth-child(3) {
+    background-color: var(--accent-color-hover);
+  }
+  & > li:nth-child(4) {
+    background-color: var(--accent-text-color);
+  }
+  & > li:nth-child(5) {
+    background-color: var(--secondary-text-color);
+  }
+  & > li:nth-child(6) {
+    background-color: var(--primary-text-color);
+  }
+}
