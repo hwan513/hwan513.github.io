@@ -27,6 +27,7 @@
   animation-delay: 1s;
   margin-block-start: 1em;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
