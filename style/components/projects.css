@@ -1,20 +1,37 @@
 /* kinda copying about.css because I just want to get this done */
 .projects {
-  text-align: justify;
+  & p,
+  & ul {
+    text-align: justify;
+  }
+  & ul {
+    margin-block-start: 0.5em;
+  }
 
   & img {
     float: right;
-    max-width: min(14em, calc(25dvw));
+    max-width: min(25em, calc(30dvw));
+    max-height: min(25em, calc(30dvw));
     font: inherit;
     /* bit abritrary, but it sits below the heading start */
     height: auto;
-    margin: 1em 0 1em 1em;
+    margin: 0 0 0.5em 0.5em;
 
     @media (max-width: 540px) {
       display: none;
     }
   }
-  & ul {
-    margin-block-start: 0.5em;
+
+  & > .project {
+    border-top: 1px solid black;
+    scroll-margin-top: 3em;
+    margin-top: 2em;
+    padding-top: 2em;
+  }
+
+  & h2,
+  & h3 {
+    display: inline;
+    margin-right: 0.5em;
   }
 }

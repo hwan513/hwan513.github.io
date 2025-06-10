@@ -33,7 +33,7 @@ main {
 
 main > section {
   scroll-margin-top: 2em;
-  padding: 2em;
+  padding-block: 2em;
 }
 
 p {
@@ -52,6 +52,10 @@ h2 {
   font-variation-settings: "CASL" 0.75, "wght" 425;
   font-size: var(--font-size-2);
   line-height: 1.5em;
+}
+
+h3 {
+  color: var(--secondary-text-color);
 }
 
 code {

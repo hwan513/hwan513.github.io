@@ -2,9 +2,9 @@ use leptos::prelude::*;
 
 /// This is so cursed I swear
 macro_rules! project {
-    ($md_path:literal, $img_path:literal, $alt:literal) => {
+    ($project_id:literal, $md_path:literal, $img_path:literal, $alt:literal) => {
         view! {
-            <div class="project">
+            <div class="project" id=$project_id>
                 <picture>
                     <source srcset=concat!($img_path, ".webp") type="image/webp" />
                     <img src=concat!($img_path, ".png") alt=$alt />
@@ -22,7 +22,16 @@ pub fn Projects() -> impl IntoView {
         <section id="projects" class="projects">
             <h1>"Projects 💼"</h1>
             {project!(
-                "../markdown/quick_draw.md", "../images/quick_draw", "Quick Draw! game mid round"
+                "blurple", "../markdown/blurple.md", "images/blurple", "Blurple Canvas main screen"
+            )}
+            {project!(
+                "leptos", "../markdown/leptos.md", "images/leptos", "Leptos tech demo pokedex page"
+            )}
+            {project!(
+                "typefaceoff", "../markdown/typefaceoff.md", "images/typefaceoff", "Typefaceoff home page"
+            )}
+            {project!(
+                "quickDraw", "../markdown/quick_draw.md", "images/quickDraw1", "Quick Draw! game mid round"
             )}
         </section>
     }
