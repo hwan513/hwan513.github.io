@@ -6,6 +6,8 @@ use leptos_router::{
     static_routes::StaticRoute,
 };
 
+use crate::pages::home::HomePage;
+
 pub fn shell(options: LeptosOptions) -> impl IntoView {
     view! {
         <!DOCTYPE html>
@@ -34,10 +36,8 @@ pub fn App() -> impl IntoView {
         // id=leptos means cargo-leptos will hot-reload this stylesheet
         // Injects a stylesheet into the document <head>
         <Stylesheet id="leptos" href="/pkg/portfolio.css" />
-
         // sets the document title
-        <Title text="Welcome to Leptos" />
-        // content for this welcome page
+        <Title text="Henry Wang" />
 
         <Router>
             <main>
@@ -50,18 +50,5 @@ pub fn App() -> impl IntoView {
                 </Routes>
             </main>
         </Router>
-    }
-}
-
-/// Renders the home page of your application.
-#[component]
-fn HomePage() -> impl IntoView {
-    // Creates a reactive value to update the button
-    let count = RwSignal::new(0);
-    let on_click = move |_| *count.write() += 1;
-
-    view! {
-        <h1>"Welcome to Leptos!"</h1>
-        <button on:click=on_click>"Click Me: " {count}</button>
     }
 }

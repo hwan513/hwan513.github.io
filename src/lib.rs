@@ -1,4 +1,5 @@
 pub mod app;
+pub mod pages;
 
 ///This is used when running the dev server.
 #[cfg(feature = "hydrate")]
