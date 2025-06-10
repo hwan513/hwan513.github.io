@@ -21,7 +21,9 @@ pub fn Projects() -> impl IntoView {
     view! {
         <section id="projects" class="projects">
             <h1>"Projects 💼"</h1>
-            {project!("../markdown/about.md", "../images/painting", "Painting")}
+            {project!(
+                "../markdown/quick_draw.md", "../images/quick_draw", "Quick Draw! game mid round"
+            )}
         </section>
     }
 }
