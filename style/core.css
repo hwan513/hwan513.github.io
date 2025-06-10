@@ -36,6 +36,11 @@ main > section {
   padding: 2em;
 }
 
+p {
+  margin-block-start: 0.4em;
+  margin-block-end: 0em;
+}
+
 h1 {
   font-variation-settings: "CASL" 0.75, "wght" 425;
   font-size: var(--font-size-3);
