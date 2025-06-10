@@ -6,7 +6,6 @@ use leptos_router::{
     static_routes::StaticRoute,
 };
 
-#[must_use]
 pub fn shell(options: LeptosOptions) -> impl IntoView {
     view! {
         <!DOCTYPE html>
@@ -27,7 +26,6 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
 
 /// Entry point for the web application
 #[component]
-#[allow(clippy::must_use_candidate)]
 pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
