@@ -40,15 +40,13 @@ pub fn App() -> impl IntoView {
         <Title text="Henry Wang" />
 
         <Router>
-            <main>
-                <Routes fallback=|| "Page not found.".into_view()>
-                    <Route
-                        path=StaticSegment("")
-                        view=HomePage
-                        ssr=SsrMode::Static(StaticRoute::new())
-                    />
-                </Routes>
-            </main>
+            <Routes fallback=|| "Page not found.".into_view()>
+                <Route
+                    path=StaticSegment("")
+                    view=HomePage
+                    ssr=SsrMode::Static(StaticRoute::new())
+                />
+            </Routes>
         </Router>
     }
 }
