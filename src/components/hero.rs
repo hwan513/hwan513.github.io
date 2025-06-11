@@ -43,7 +43,7 @@ pub fn Hero() -> impl IntoView {
                             <span>"CV: "</span>
                             <a href="/cv.pdf">
                                 <Pdf />
-                                "/cv.pdf"
+                                "cv.pdf"
                             </a>
                         </code>
                         <code>
