@@ -13,4 +13,4 @@
   me of the Java stack traces. So would I keep using Leptos? Yeah probably, I'm a sucker for that stuff, and it does help
   me learn a lot.
 
-[Check out the source code here](https://github.com/leptos-rs/leptos)
+[Check out the source code here](https://github.com/hwan513/leptos-tech-demo)
