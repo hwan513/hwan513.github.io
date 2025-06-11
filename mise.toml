@@ -9,3 +9,7 @@ biome = "latest"
 run = "chmod -R +x mise-tasks/"
 description = "Update scripts execution permissions defined in mise-tasks"
 sources = ["mise-tasks/**/*"]
+
+[settings]
+experimental = true
+idiomatic_version_file_enable_tools = []
