@@ -25,7 +25,7 @@ pub fn Projects() -> impl IntoView {
                 "blurple", "../markdown/blurple.md", "images/blurple", "Blurple Canvas main screen"
             )}
             {project!(
-                "leptos", "../markdown/leptos.md", "images/leptos_demo", "Leptos tech demo pokedex page"
+                "leptos_tech_demo", "../markdown/leptos.md", "images/leptos_demo", "Leptos tech demo pokedex page"
             )}
             {project!(
                 "typefaceoff", "../markdown/typefaceoff.md", "images/typefaceoff", "Typefaceoff home page"
