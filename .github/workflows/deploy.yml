@@ -8,6 +8,9 @@ on:
       - "assets/**"
       - "rust-toolchain.toml"
       - "Cargo.lock"
+  pull_request: # TODO: remove this after finishing testing
+    branches:
+      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -35,30 +38,34 @@ jobs:
           experimental: true
           log_level: debug
 
-      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      # - uses: actions-rust-lang/setup-rust-toolchain@v1
+      #   with:
+      #     cache: false
 
-      - name: Cache rust toolchain paths
-        uses: actions/cache@v4
-        id: cache
+      - run: echo RUSTUP_SYSROOT=$(rustc --print sysroot) >> $GITHUB_ENV
+
+      - uses: Swatinem/rust-cache@v2
         with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            ~/.rustup/
-            target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/rust-toolchain.toml', '**/Cargo.lock') }}
-          restore-keys: ${{ runner.os }}-cargo-
+          cache-directories: "${{env.RUSTUP_SYSROOT }}/lib\n./target"
+          cache-targets: "false"
+
+      - name: Install minimal needed rust toolchain
+        run: rustup toolchain install --profile minimal
 
       - name: Build application in release mode
         run: mise run build:release
 
-      - name: Upload static files as artifact
-        id: deployment
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
+      # - name: upload target artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     path: target
+
+      # - name: Upload static files as artifact
+      #   id: deployment
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: ./dist
+
   # Deploy job
   deploy:
     # Add a dependency to the build job
