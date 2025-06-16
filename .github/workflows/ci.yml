@@ -28,7 +28,10 @@ jobs:
         uses: rui314/setup-mold@v1
 
       - name: Install minimal needed rust toolchain
-        run: rustup install --profile minimal --component clippy,rustfmt
+        run: rustup toolchain install --profile minimal
+
+      - name: Install rustup CI components
+        run: rustup component add clippy rustfmt
 
       - name: setup caching for debug build
         uses: Swatinem/rust-cache@v2
