@@ -1,8 +1,13 @@
 name: Deploy Build leptos site to GitHub Pages
 on:
-  # Runs on pushes targeting the default branch
+  # Runs on pushes targeting the default branch and only changes to code related files
   push:
     branches: ["main"]
+    paths:
+      - "src/**"
+      - "assets/**"
+      - "rust-toolchain.toml"
+      - "Cargo.lock"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -30,19 +35,10 @@ jobs:
           experimental: true
           log_level: debug
 
-      - name: Cache rust toolchain paths
-        uses: actions/cache@v4
-        id: cache
-        with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            ~/.rustup/
-            target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/rust-toolchain.toml', '**/Cargo.lock') }}
-          restore-keys: ${{ runner.os }}-cargo-
+      - name: Install minimal needed rust toolchain
+        run: rustup toolchain install --profile minimal
+
+      - uses: Swatinem/rust-cache@v2
 
       - name: Build application in release mode
         run: mise run build:release
@@ -52,6 +48,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
+
   # Deploy job
   deploy:
     # Add a dependency to the build job
@@ -72,4 +69,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
+        uses: actions/deploy-pages@v4

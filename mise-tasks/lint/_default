@@ -2,5 +2,5 @@
 #MISE description="Check linting in rust and cssfiles"
 #MISE sources=["src/**/*.rs"]
 #MISE outputs={auto=true}
-cargo clippy --all-targets --all-features -- -D warnings
+cargo clippy --no-deps --all-targets --all-features
 biome lint

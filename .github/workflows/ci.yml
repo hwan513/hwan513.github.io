@@ -15,7 +15,7 @@ concurrency:
 
 env:
   MISE_EXPERIMENTAL: true
-  RUSTFLAGS: "-Dwarnings"
+  RUSTFLAGS: "-Dwarnings -Z threads=4"
 
 jobs:
   ci:
@@ -23,27 +23,24 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - uses: jdx/mise-action@v2
+
+      - name: Setup mold linker for faster builds
+        uses: rui314/setup-mold@v1
+
+      - name: Install minimal needed rust toolchain
+        run: rustup toolchain install --profile minimal
+
+      - name: Install rustup CI components
+        run: rustup component add clippy rustfmt
+
+      - name: setup caching for debug build
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install mise tools
+        uses: jdx/mise-action@v2
         with:
           experimental: true
           log_level: debug
-
-      - name: Cache rust toolchain paths
-        uses: actions/cache@v4
-        id: cache
-        with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            ~/.rustup/
-            target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/rust-toolchain.toml', '**/Cargo.lock') }}
-          restore-keys: ${{ runner.os }}-cargo-
-
-      - name: Update rustup toolchain
-        run: rustup component add rustfmt clippy
 
       - name: Check formatting
         run: mise run format
